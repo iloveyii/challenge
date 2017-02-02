@@ -60,16 +60,16 @@ class ChallengeController extends Controller
 
         $command = $query->createCommand();
         $data = $command->queryAll();
-        print_r($data); exit;
+        // print_r($data); exit;
 
-        $data = Challenge::find()->joinWith('subcategory', true, 'INNER JOIN')->all();
-        var_dump($data);
+        // $data = Challenge::find()->joinWith('subcategory', true, 'INNER JOIN')->all();
+        // var_dump($data);
 
         $dataProvider = new ActiveDataProvider([
             'query' => Challenge::find(),
         ]);
 
-        return $this->render('index', [
+        return $this->render('playnow', [
             'dataProvider' => $dataProvider,
         ]);
     }

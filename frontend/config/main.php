@@ -32,7 +32,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '' => 'challenge/index',
+                '' => 'challenge/playnow',
                 'subcategory' => 'site/services',
                 'contact' => 'site/contact',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
