@@ -50,6 +50,7 @@ class ChallengeController extends Controller
 
     public function actionPlaynow()
     {
+        /*
         $q = new Query();
         $q->join('INNER JOIN', 'subcategory');
 
@@ -75,19 +76,31 @@ class ChallengeController extends Controller
                     INNER JOIN
                 category ON sub_category.category_id = category.id
         ';
+*/
 
-        $query = (new Query())
-                  ->select(['sub_category_id', 'category.name'])
-                  ->from('challenge')
-                  ->innerJoin('sub_category', 'sub_category_id = `sub_category`.id')
-                  ->innerJoin('category', 'category_id = category.id')
-                  ->limit(5);
-        $categories = $query->all();
+
+
+        $categories = Category::find()->all();
 
         foreach ($categories as $category) {
-            $dataProviders[] = new ActiveDataProvider([
-              'query' => Challenge::find()->where(['sub_category_id'=>$category['sub_category_id']]),
+            echo 'Category : ' . $category->name;
+
+            $query = (new Query())
+                ->select(['sub_category.id AS sub_category_id', 'sub_category.name AS sub_category_name', 'challenge.title AS challenge_title', 'date_stop'])
+                ->from('challenge')
+                ->innerJoin('sub_category', 'sub_category_id = `sub_category`.id')
+                ->innerJoin('category', 'category_id = category.id')
+                ->where(['category.id'=>$category->id])
+                ->limit(25);
+
+            $dataProviders[$category->name] = new ActiveDataProvider([
+                'query' => $query // $query->where(['category.id'=>$category->id]),
             ]);
+
+            /*
+            foreach($dataProviders[$category->name]->models as $model) {
+               print_r($model);
+            } */
         }
 
         return $this->render('playnow', [

@@ -10,7 +10,8 @@ $this->title = 'Play Now';
 ?>
 
 <div class="challenge-index">
-    <?php foreach ($dataProviders as $name => $dataProvider) : ?>
+    <?php foreach ($dataProviders as $name => $dataProvider) :  ?>
+        <h1><?= Html::encode($name) ?></h1>
         <?=
           GridView::widget([
             'dataProvider' => $dataProvider,
@@ -18,20 +19,20 @@ $this->title = 'Play Now';
               'columns' => [
                 [
                   'attribute' => 'sub_category_id',
-                  'value' => function($model) {
-                    return $model->getSubcategoryName();
+                  'value' => function($data) {
+                    return  $data['sub_category_name']; //$model->getSubcategoryName();
                   }
                 ],
                 [
-                  'header' => 'Time Left',
-                  'value' => function(){
-                    return '<span class="glyphicon glyphicon-download"></span>';
+                  'header' => 'Ending Time',
+                  'value' => function($data){
+                    return '<span class="glyphicon glyphicon-download"></span>  ' . $data['date_stop'] ;
                   },
                   'format' => 'html'
                 ],
-                'title',
+                'challenge_title',
           ],
         ]); ?>
 
-    <?php endforeach;?>
+    <?php endforeach; ?>
 </div>
