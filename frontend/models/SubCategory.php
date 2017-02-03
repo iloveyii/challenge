@@ -29,6 +29,7 @@ class SubCategory extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            [['name', 'category_id'], 'unique', 'targetAttribute'=>['name', 'category_id']],
             [['category_id'], 'integer'],
             [['name'], 'string', 'max' => 45],
             [['evaluation_class'], 'string', 'max' => 70],
