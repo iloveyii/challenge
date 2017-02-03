@@ -46,7 +46,7 @@ class Challenge extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'sub_category_id' => 'Sub Category ID',
+            'sub_category_id' => 'Challenge',
             'date_start' => 'Date Start',
             'date_stop' => 'Date Stop',
             'description' => 'Description',

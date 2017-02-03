@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Category;
 use frontend\models\SubCategory;
 use Yii;
 use frontend\models\Challenge;
@@ -64,13 +65,33 @@ class ChallengeController extends Controller
 
         // $data = Challenge::find()->joinWith('subcategory', true, 'INNER JOIN')->all();
         // var_dump($data);
+        $sql = '
+            SELECT 
+                category.id, category.name
+            FROM
+                challenge
+                    INNER JOIN
+                sub_category ON sub_category_id = sub_category.id
+                    INNER JOIN
+                category ON sub_category.category_id = category.id
+        ';
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => Challenge::find(),
-        ]);
+        $query = (new Query())
+                  ->select(['sub_category_id', 'category.name'])
+                  ->from('challenge')
+                  ->innerJoin('sub_category', 'sub_category_id = `sub_category`.id')
+                  ->innerJoin('category', 'category_id = category.id')
+                  ->limit(5);
+        $categories = $query->all();
+
+        foreach ($categories as $category) {
+            $dataProviders[] = new ActiveDataProvider([
+              'query' => Challenge::find()->where(['sub_category_id'=>$category['sub_category_id']]),
+            ]);
+        }
 
         return $this->render('playnow', [
-            'dataProvider' => $dataProvider,
+            'dataProviders' => $dataProviders,
         ]);
     }
 
