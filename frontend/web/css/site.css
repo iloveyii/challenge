@@ -9,6 +9,8 @@ body {
     height: auto;
     margin: 0 auto -60px;
     padding: 0 0 60px;
+    background-image: url('/images/bg.png');
+    background-repeat: repeat;
 }
 
 .wrap > .container {
