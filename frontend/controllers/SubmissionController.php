@@ -66,7 +66,7 @@ class SubmissionController extends Controller
     public function actionCreate()
     {
         if (Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect(['site/login']);
         }
 
         $userId = Yii::$app->user->id;

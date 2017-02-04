@@ -128,8 +128,15 @@ class ChallengeController extends Controller
     public function actionCreate()
     {
         $model = new Challenge();
+        $categories = Category::find()->select(['id', 'name'])->all();
 
-        $subcategories = ArrayHelper::map(SubCategory::find()->select(['id', 'name'])->all(), 'id', 'name');
+        foreach($categories as $category) {
+            $subcategory = SubCategory::find()->where(['category_id' => $category->id])->all();
+
+            if(! empty($subcategory)) {
+                $list[$category->name] = ArrayHelper::map($subcategory, 'id', 'name');
+            }
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -137,7 +144,7 @@ class ChallengeController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'subcategories' => $subcategories
+            'subcategories' => $list
         ]);
     }
 
