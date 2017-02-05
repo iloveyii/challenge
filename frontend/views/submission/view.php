@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             [
               'attribute'=>'challenge_id',
-              'value'=>$model->getChallengeName()
+              'value'=>$model->getChallengeTitle()
             ],
             [
                 'attribute'=>'code',

@@ -31,6 +31,7 @@ class Submission extends \yii\db\ActiveRecord
     {
         return [
             [['challenge_id', 'user_id', 'score'], 'integer'],
+            [['challenge_id', 'user_id'], 'unique', 'targetAttribute'=>['challenge_id', 'user_id'], 'message'=>'You have already submitted'],
             [['code'], 'string', 'max' => 300],
         ];
     }
