@@ -6,6 +6,7 @@ use frontend\models\Challenge;
 use Yii;
 use frontend\models\Submission;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -42,6 +43,24 @@ class SubmissionController extends Controller
         ]);
 
         return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionFame()
+    {
+        $query = (new Query())
+                ->select('user_id, user.username, sum(score) AS total_score')
+                ->from('submission')
+                ->innerJoin('user', 'user_id = user.id')
+                ->groupBy(['user_id'])
+                ->orderBy('total_score DESC');
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        return $this->render('fame', [
             'dataProvider' => $dataProvider,
         ]);
     }

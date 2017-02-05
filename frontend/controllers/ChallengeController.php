@@ -78,8 +78,6 @@ class ChallengeController extends Controller
         ';
 */
 
-
-
         $categories = Category::find()->all();
 
         foreach ($categories as $category) {

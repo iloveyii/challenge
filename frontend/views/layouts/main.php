@@ -36,7 +36,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Play Now', 'url' => ['/challenge/playnow']],
-        ['label' => 'Hall of fame', 'url' => ['/site/fame']],
+        ['label' => 'Hall of fame', 'url' => ['/submission/fame']],
     ];
 
 
