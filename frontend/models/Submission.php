@@ -42,14 +42,14 @@ class Submission extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'challenge_id' => 'Challenge ID',
-            'user_id' => 'User ID',
+            'challenge_id' => 'Challenge',
+            'user_id' => 'User',
             'code' => 'Code',
             'score' => 'Score',
         ];
     }
 
-    public function getChallengeName()
+    public function getChallengeTitle()
     {
         $challenge = Challenge::findOne($this->challenge_id);
 

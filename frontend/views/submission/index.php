@@ -24,12 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'challenge_id',
                 'value'=>function($model) {
-                    return substr($model->getChallengeName(), 0, 20);
+                    return substr($model->getChallengeTitle(), 0, 20);
                 }
             ],
 
             [
-                'attribute'=>'challenge_id',
+                'attribute'=>'user_id',
                 'value'=>function($model) {
                     return $model->getUserName();
                 }
