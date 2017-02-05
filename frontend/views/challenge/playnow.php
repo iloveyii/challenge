@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -31,6 +32,19 @@ $this->title = 'Play Now';
                   'format' => 'html'
                 ],
                 'challenge_title',
+
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'template' => '{view}',
+                    'buttons' => [
+                        'view' => function ($url, $data) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>',
+                                Url::to(['challenge/view', 'id'=>$data['id']]), [
+                                'title' => Yii::t('app', 'View Challenge'),
+                            ]);
+                        }
+                    ]
+                ],
           ],
         ]); ?>
 

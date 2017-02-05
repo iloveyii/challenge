@@ -77,12 +77,11 @@ class ChallengeController extends Controller
                 category ON sub_category.category_id = category.id
         ';
 */
-
         $categories = Category::find()->all();
 
         foreach ($categories as $category) {
             $query = (new Query())
-                ->select(['sub_category.id AS sub_category_id', 'sub_category.name AS sub_category_name', 'challenge.title AS challenge_title', 'date_stop'])
+                ->select(['challenge.id AS id', 'sub_category.id AS sub_category_id', 'sub_category.name AS sub_category_name', 'challenge.title AS challenge_title', 'date_stop'])
                 ->from('challenge')
                 ->innerJoin('sub_category', 'sub_category_id = `sub_category`.id')
                 ->innerJoin('category', 'category_id = category.id')
@@ -90,13 +89,8 @@ class ChallengeController extends Controller
                 ->limit(25);
 
             $dataProviders[$category->name] = new ActiveDataProvider([
-                'query' => $query // $query->where(['category.id'=>$category->id]),
+                'query' => $query
             ]);
-
-            /*
-            foreach($dataProviders[$category->name]->models as $model) {
-               print_r($model);
-            } */
         }
 
         return $this->render('playnow', [

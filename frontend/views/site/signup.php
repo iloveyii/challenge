@@ -13,11 +13,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="col-md-6 col-md-offset-3" style="background-color: #FFF; border-radius: 3px;">
     <div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1> <hr>
+        <h1><?= Html::encode($this->title) ?></h1>
+        <hr>
 
-    <p>Please fill out the following fields to signup:</p>
+        <p>Please fill out the following fields to signup:</p>
 
-    <div class="row">
+        <div class="row">
         <div class="col-lg-12">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
@@ -35,5 +36,5 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php ActiveForm::end(); ?>
         </div>
     </div>
-</div>
+    </div>
 </div>
