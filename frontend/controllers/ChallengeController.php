@@ -81,8 +81,6 @@ class ChallengeController extends Controller
         $categories = Category::find()->all();
 
         foreach ($categories as $category) {
-            echo 'Category : ' . $category->name;
-
             $query = (new Query())
                 ->select(['sub_category.id AS sub_category_id', 'sub_category.name AS sub_category_name', 'challenge.title AS challenge_title', 'date_stop'])
                 ->from('challenge')
