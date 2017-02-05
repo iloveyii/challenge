@@ -19,7 +19,7 @@ $this->title = 'Play Now';
               'layout'=>"{items}",
               'columns' => [
                 [
-                  'attribute' => 'sub_category_id',
+                  'header' => 'Sub Category',
                   'value' => function($data) {
                     return  $data['sub_category_name']; //$model->getSubcategoryName();
                   }
@@ -31,8 +31,10 @@ $this->title = 'Play Now';
                   },
                   'format' => 'html'
                 ],
-                'challenge_title',
-
+                [
+                    'header' => 'Challenge',
+                    'value' => 'challenge_title'
+                ],
                 [
                     'class' => 'yii\grid\ActionColumn',
                     'template' => '{view}',
