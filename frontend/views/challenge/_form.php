@@ -51,7 +51,8 @@ use kartik\widgets\DateTimePicker;
         );
     ?>
 
-    <?= $form->field($model, 'title')->textInput(['rows'=>10]) ?>
+    <?= $form->field($model, 'title')->textInput() ?>
+    <?= $form->field($model, 'description')->textarea(['rows'=>10]) ?>
 
     <?= $form->field($model, 'expected_result')->textInput(['maxlength' => true]) ?>
 
