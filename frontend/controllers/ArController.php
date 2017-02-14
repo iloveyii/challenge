@@ -131,7 +131,7 @@ class ArController extends Controller
     {
         foreach (range(2, $x - 1) as $divisor)
         {
-            if ($x / $divisor == 0)
+            if ($x % $divisor == 0)
             {
                 return true;
             }

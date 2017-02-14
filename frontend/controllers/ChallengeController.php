@@ -50,33 +50,8 @@ class ChallengeController extends Controller
 
     public function actionPlaynow()
     {
-        /*
-        $q = new Query();
-        $q->join('INNER JOIN', 'subcategory');
-
-        $query = (new Query())
-            ->from('challenge')
-            ->innerJoin('sub_category', 'sub_category_id = `sub_category`.id')
-            ->innerJoin('category', 'category_id = category.id')
-            ->limit(5);
-
-        $command = $query->createCommand();
-        $data = $command->queryAll();
-        // print_r($data); exit;
-
-        // $data = Challenge::find()->joinWith('subcategory', true, 'INNER JOIN')->all();
-        // var_dump($data);
-        $sql = '
-            SELECT 
-                category.id, category.name
-            FROM
-                challenge
-                    INNER JOIN
-                sub_category ON sub_category_id = sub_category.id
-                    INNER JOIN
-                category ON sub_category.category_id = category.id
-        ';
-*/
+        $path = sprintf("%s/%s", Yii::getAlias('@app'), 'challenge20170214.sql');
+        echo $path;
         $categories = Category::find()->all();
 
         foreach ($categories as $category) {
