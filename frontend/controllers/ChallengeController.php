@@ -50,8 +50,6 @@ class ChallengeController extends Controller
 
     public function actionPlaynow()
     {
-        $path = sprintf("%s/%s", Yii::getAlias('@app'), 'challenge20170214.sql');
-        echo $path;
         $categories = Category::find()->all();
 
         foreach ($categories as $category) {
