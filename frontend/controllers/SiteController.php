@@ -309,125 +309,14 @@ class SiteController extends Controller
         return;
     }
 
-    public function actionSearch($q)
+    public function actionDestination()
     {
-        $data[] = $this->imdbData($q);
+        $xmlString = file_get_contents('https://www.flygresor.se/fbfeeder.php?feedtype=city');
+        $xmlString = str_replace('g:', '', $xmlString);
+        $xml = new \SimpleXMLElement($xmlString);
 
-        return $this->render('search', [
-            'movies' => $data,
+        return $this->render('destination', [
+            'trips' => $xml->entry,
         ]);
     }
-
-    public function actionMovie($id)
-    {
-        $movie = Movie::findOne($id);
-
-        if($movie !== null) {
-            if (empty($movie->youtube_id)) {
-                $movie->youtube_id = $this->findYoutubeId($movie->title);
-                $movie->save();
-            }
-
-            if(empty($movie->magnet_link)) {
-                $movie->magnet_link = $this->findMagnetLink($movie->title);
-                $movie->save();
-            }
-
-            return $this->render('movie', [
-                'movie' => $movie
-            ]);
-        }
-    }
-
-    private function findYoutubeId($title)
-    {
-        $youtube = new Youtube(array('key' => 'AIzaSyDMOpb7NF16HTqwfDmuvidmVPGUkrLmKN8'));
-        $video = $youtube->search($title . ' trailer official' );
-
-        if(is_array($video)) {
-            foreach($video as $v) {
-                $videoId = $v->id->videoId;
-                if(! empty($videoId)) {
-                    return $videoId;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    public function actionMovies()
-    {
-        $movies = Movie::find()->all();
-        $this->downloadImage($movies);
-
-        return $this->render('search', [
-            'movies' => $movies,
-        ]);
-    }
-
-    private function downloadImage($movies)
-    {
-        $alias = Yii::getAlias('@webroot');
-
-        foreach ($movies as $movie) {
-            if(strlen($movie->poster) > 80) {
-                $image = file_get_contents($movie->poster);
-                $relPath = sprintf("/%s/%s-%d.%s", 'images', str_replace('--', '-', strtolower(preg_replace('/[^a-z\d-]/i', '-', $movie->title))), $movie->id, 'jpg');
-                $path = sprintf("%s%s", $alias, $relPath);
-
-                if($image) {
-                    (! file_put_contents($path, $image)) || $movie->poster = $relPath;
-                    $movie->save();
-                }
-            }
-        }
-    }
-
-    protected function findMagnetLink($title)
-    {
-        $tpbObj = new Tpb();
-        $searchResults = $tpbObj->searchByTitle($title);
-
-        return isset($searchResults->Magnet) ? $searchResults->Magnet : 'NA';
-    }
-
-    public function actionDownload($movie)
-    {
-
-    }
-
-    private function imdbData($title)
-    {
-        $movie = Movie::findOne(['title'=>trim($title)]);
-
-        if($movie !== null)
-        {
-           return $movie;
-        }
-
-        $oIMDB = new IMDB($title);
-
-        if ($oIMDB->isReady) {
-
-            $data = $oIMDB->getAll();
-            $title = $data['Title']['value'];
-            $poster = $data['Poster']['value'];
-
-            $movie = new Movie();
-            $movie->title = $title;
-            $movie->poster = $poster;
-            $movie->save();
-
-            return $movie;
-        }
-
-        return (object)[
-            'id'=>'na',
-            'title' => '',
-            'poster' => '',
-        ];
-
-    }
-
 }
