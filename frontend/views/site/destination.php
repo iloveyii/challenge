@@ -13,9 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
     $this->registerCss('
         .newspaper {
-            -webkit-columns: 100px 3; /* Chrome, Safari, Opera */
-            -moz-columns: 100px 3; /* Firefox */
-            columns: 100px 3;
+            -webkit-columns: 100px 4; /* Chrome, Safari, Opera */
+            -moz-columns: 100px 4; /* Firefox */
+            columns: 100px 4;
         }
     ');
 
