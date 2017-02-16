@@ -18,14 +18,17 @@ $this->params['breadcrumbs'][] = $this->title;
             columns: 100px 3;
         }
     ');
+
+    $c = 0;
 ?>
 
 <div class="newspaper">
     <?php foreach($trips as $trip): ?>
-        <div class="list-group">
+        <div class="list-group22">
             <a href="<?=$trip->link?>">
                 <img style="height:220px; width:100%" src="<?=$trip->image_link?>" class="img-thumbnail" />
             </a>
         </div>
+        <?php $c++; if($c > 34) break;?>
     <?php endforeach; ?>
 </div>
