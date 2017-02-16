@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="newspaper">
     <?php foreach($trips as $trip): ?>
-        <div class="list-group22">
+        <div class="list-group">
             <a href="<?=$trip->link?>">
                 <img style="height:220px; width:100%" src="<?=$trip->image_link?>" class="img-thumbnail" />
             </a>
