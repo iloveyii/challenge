@@ -21,7 +21,8 @@
         "kartik-v/yii2-widgets": "*",
         "pavlinter/yii2-wow": "dev-master",
         "kartik-v/yii2-widget-select2": "@dev",
-        "kartik-v/yii2-widget-timepicker": "^1.0"
+        "kartik-v/yii2-widget-timepicker": "^1.0",
+        "fguillot/picofeed": "@stable"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",
