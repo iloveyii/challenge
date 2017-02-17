@@ -13,9 +13,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
     $this->registerCss('
         .newspaper {
-            -webkit-columns: 100px 4; /* Chrome, Safari, Opera */
-            -moz-columns: 100px 4; /* Firefox */
-            columns: 100px 4;
+            -webkit-columns: 100px 2; /* Chrome, Safari, Opera */
+            -moz-columns: 100px 2; /* Firefox */
+            columns: 100px 2;
         }
     ');
 
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 $csvImages = '';
                 $aImages = [];
                 $aImages[] = [
-                    'content' => "<img class='img-thumbnail' style='height:220px; width:100%' src='{$trip->image_link}'/>",
+                    'content' => "<img class='img-thumbnail' style='height:420px; width:100%' src='{$trip->image_link}'/>",
                     'caption' => "<h4>{$trip->title}</h4><p>This is the caption text</p>",
                     'options' => [],
                 ];
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     foreach($images as $image) {
                         $aImages[] = [
-                            'content' => "<img class='img-thumbnail' style='height:220px; width:100%' src='{$image}'/>",
+                            'content' => "<img class='img-thumbnail' style='height:420px; width:100%' src='{$image}'/>",
                             'caption' => "<h4>{$trip->title}</h4><p>This is the caption text</p>",
                             'options' => [],
                         ];
