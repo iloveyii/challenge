@@ -311,7 +311,7 @@ class SiteController extends Controller
 
     public function actionDestination()
     {
-        $xmlString = file_get_contents('https://www.flygresor.se/fbfeeder.php?feedtype=city');
+        $xmlString = file_get_contents('https://www.flygresor.se/fbfeeder.php?feedtype=city'); 
         $xmlString = str_replace('g:', '', $xmlString);
         $xml = new \SimpleXMLElement($xmlString);
 

@@ -17,20 +17,49 @@ $this->params['breadcrumbs'][] = $this->title;
             -moz-columns: 100px 2; /* Firefox */
             columns: 100px 2;
         }
+        
+        .item {
+            display: none;
+            position: relative;
+            .transition(.6s ease-in-out left);
+        }
     ');
 
-    $c = 0;
+    $this->registerJs("
+        $(document).ready(function() {      
+           $('.carousel').carousel({
+                pause: false,
+                interval: 700
+            });
+        });
+        
+        $('.carousel').on({
+          mouseenter: function () {
+            $(this).carousel({
+                pause: false,
+                interval: 1000
+            });
+            console.log(1);
+          },
+          mouseout: function () {
+            $(this).carousel('pause');
+            console.log(2);
+          }
+        });
+        
+    ");
+    $c = 1;
 ?>
 <div class="newspaper">
     <?php foreach($trips as $trip): ?>
         <div class="list-group">
-            <a href="<?=$trip->link?>">
+            <a id="destination" href="<?=$trip->link?>">
                 <?php
                 $csvImages = '';
                 $aImages = [];
                 $aImages[] = [
                     'content' => "<img class='img-thumbnail' style='height:420px; width:100%' src='{$trip->image_link}'/>",
-                    'caption' => "<h4>{$trip->title}</h4><p>This is the caption text</p>",
+                    'caption' => "<h4>{$trip->title}</h4><p>{$trip->description}</p>",
                     'options' => [],
                 ];
                 if(isset($trip->additional_image_link)) {
@@ -39,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     foreach($images as $image) {
                         $aImages[] = [
                             'content' => "<img class='img-thumbnail' style='height:420px; width:100%' src='{$image}'/>",
-                            'caption' => "<h4>{$trip->title}</h4><p>This is the caption text</p>",
+                            'caption' => "<h4>{$trip->title}</h4><p>{$trip->description}</p>",
                             'options' => [],
                         ];
                     }
@@ -53,6 +82,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
             </a>
         </div>
-        <?php $c++; if($c > 9) break;?>
+        <?php $c++; if($c > 2) break;?>
     <?php endforeach; ?>
 </div>
