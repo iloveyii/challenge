@@ -122,3 +122,9 @@ a.navbar-brand::before
 {
     content: "#";
 }
+
+div.container div.box {
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #FFF;
+}
