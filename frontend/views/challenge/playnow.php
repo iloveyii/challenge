@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Play Now';
 ?>
 
-<div class="challenge-index">
+<div class="challenge-index box">
     <?php foreach ($dataProviders as $name => $dataProvider) :  ?>
         <h1><?= Html::encode($name) ?></h1>
 

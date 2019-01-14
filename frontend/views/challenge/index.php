@@ -9,7 +9,7 @@ use yii\grid\GridView;
 $this->title = 'Challenges';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="challenge-index">
+<div class="challenge-index box">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
