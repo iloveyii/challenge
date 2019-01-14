@@ -28,7 +28,7 @@ AppAsset::register($this);
 <div class="wrap" style="background-color: #e9ebee">
     <?php
     NavBar::begin([
-        'brandLabel' => 'C0D3.rocks',
+        'brandLabel' => 'Challenge',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
