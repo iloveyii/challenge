@@ -9,7 +9,7 @@ use yii\grid\GridView;
 $this->title = 'Sub Categories';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sub-category-index">
+<div class="sub-category-index box">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

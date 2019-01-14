@@ -10,7 +10,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Submissions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="submission-view">
+<div class="submission-view box">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

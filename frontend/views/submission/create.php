@@ -10,7 +10,7 @@ $this->title = 'Create Submission';
 $this->params['breadcrumbs'][] = ['label' => 'Submissions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="submission-create">
+<div class="submission-create box">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

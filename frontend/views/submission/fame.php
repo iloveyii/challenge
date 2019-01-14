@@ -9,7 +9,7 @@ use yii\grid\GridView;
 $this->title = 'Submissions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="submission-index">
+<div class="submission-index box">
 
     <h1><?= Html::encode('Hall of fame') ?></h1>
 

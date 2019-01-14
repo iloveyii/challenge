@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Sub Categories', 'url' => ['index'
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="sub-category-update">
+<div class="sub-category-update box">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

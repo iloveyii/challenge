@@ -10,7 +10,7 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Sub Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sub-category-view">
+<div class="sub-category-view box">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

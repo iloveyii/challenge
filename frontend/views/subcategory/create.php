@@ -10,7 +10,7 @@ $this->title = 'Create Sub Category';
 $this->params['breadcrumbs'][] = ['label' => 'Sub Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sub-category-create">
+<div class="sub-category-create box">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

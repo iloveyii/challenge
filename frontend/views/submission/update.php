@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Submissions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="submission-update">
+<div class="submission-update box">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
