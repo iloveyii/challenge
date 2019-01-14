@@ -1,5 +1,12 @@
-Yii 2 Advanced Project Template
+Challenge - coding
 ===============================
+
+
+This is an app for coding challenges. The admin can create a challenge and invite others to complete it. The code is tested against the results and performance automatically.
+
+![Screenshot](http://challenge.softhem.se/images/screenshot.png)
+
+# [Demo](http://challenge.softhem.se/)
 
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
