@@ -13,8 +13,9 @@ INSTALLATIONS
   * Clone the repository `git clone git@bitbucket.org:iloveyii/challenge.git`.
   * Run composer install `composer install`.
   * Then run composer command `composer dump-autoload`.
-  * Create a database (manually for now) and adjust the database credentials in the `common/config/main.local.php` file as per your environment.
-  * Run the init command to create the database table as `php init.php`.
+  * Create a database (manually for now) and adjust the database credentials in the `common/config/main-local.php` file as per your environment.
+  * Run the init command to initialize Yii 2 app `php init.php`.
+  * Run migrations create the database table as `./yii migrate`.
   * Point web browser to frontend/web directory or Create a virtual host using [vh](https://github.com/iloveyii/vh) `vh new challenge -p ~/challenge/frontend/web`
   * Browse to [http://challenge.loc](http://challenge.loc) 
   
